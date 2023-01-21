@@ -1,0 +1,165 @@
+       			  --------------------
+      			 | How to use GuiMain |
+      			  --------------------
+
+1. '-file filepath' runs a script that contains commands
+2. '-text' runs the program. Input must be done through the console
+3. no argument creates the GUI
+
+       			  -------------------------------
+      			 | This is the USEME for our gui |
+      			  -------------------------------
+
+
+                            GENERAL RULES
+
+ 1. Load must always be used first to load an image into the program
+ 2. Save can be entered at any time as long as an image is loaded
+
+
+ - the console at the bottom prints out every action and error messages for when the
+   action did not occur
+
+ - the user must first load an image by selecting the file path
+	- every button will print an error in the console text area if pressed before load
+
+ - if the user wants to save an image
+	- click the save button
+	- specify the filename
+	- specify the file extension
+		- must be '.ppm' '.png' '.jpg' or '.bmp'
+
+ - if the user wants to apply a grayscale
+	- click the dropdown menu and select which pixel value grayscale they want
+
+ - if the user wants to apply a blur/sharpen
+	- click either of the buttons 'blur' or 'sharpen'
+
+ - if the user wants to apply a flip
+	- click either of the buttons 'flip horizontal' or 'flip vertical'
+
+ - if the user wants to brighten/darken an image
+	- click either of the buttons and enter a valid positive integer
+
+ - if the user wants to view a red histogram
+	- click the 'r' button to view
+
+ - if the user wants to view a green histogram
+	- click the 'g' button to view
+
+ - if the user wants to view a blue histogram
+	- click the 'blue' button to view
+
+ - if the user wants to view an intensity histogram
+	- click the 'rgb' button to view
+
+
+
+
+
+       			  ---------------------------------
+      			 | This is the USEME for System.in |
+      			  ---------------------------------
+
+
+              LOADING
+
+if the user wants to load koala.ppm
+ and call the new image 'koala'
+ > load images/koala.ppm koala <
+
+if the user wants to load koala.jpg
+ and call the new image 'koala'
+ > load images/koala.jpg koala <
+
+if the user wants to load koala.png
+ and call the new image 'koala'
+ > load images/koala.png koala <
+
+if the user wants to load koala.bmp
+ and call the new image 'koala'
+ > load images/koala.bmp koala <
+
+if the user wants to overwrite a
+previously occupied name in the hashmap
+ > load images/test.ppm koala <
+
+
+
+                        EDITS
+
+if the user wants to brighten the image 'koala' by an
+increment of 10 and call the new image 'koala-brighter'
+ > brightness 10 koala koala-brighter <
+
+if the user wants to darken the image 'koala' by a
+decrement of 10 and call the new image 'koala-darker'
+ > brightness -10 koala koala-darker <
+
+if the user wants to vertically flip the image
+'koala' and call the new image 'koala-vertical'
+ > flip vertical koala koala-vertical <
+
+if the user wants to horizontally flip the image
+'koala' and call the new image 'koala-horizontal'
+ > flip horizontal koala koala-horizontal <
+
+if the user wants to create a grayscale based
+on the red values and call the new image koala-red
+ > grayscale red koala koala-red <
+
+if the user wants to create a grayscale based
+on the green values and call the new image koala-green
+ > grayscale green koala koala-green <
+
+if the user wants to create a grayscale based
+on the blue values and call the new image koala-blue
+ > grayscale blue koala koala-blue <
+
+if the user wants to create a grayscale based on the maximum
+value of each pixel and call the new image koala-value
+ > grayscale value koala koala-value <
+
+if the user wants to create a grayscale based on the mean
+value of each pixel and call the new image koala-intensity
+ > grayscale intensity koala koala-intensity <
+
+if the user wants to create a grayscale based on the
+luma formula and call the new image koala-luma
+ > grayscale luma koala koala-luma <
+
+if the user wants to apply the filter sepia
+and call the new image koala-sepia
+ > filter sepia koala koala-sepia <
+
+if the user wants to apply the filter luma
+and call the new image koala-luma
+ > filter sepia koala koala-luma <
+
+if the user wants to create a sharpened image
+and call the new image koala-sharpened
+ > quality sharpen koala koala-sharpen <
+
+if the user wants to create a blurred image
+and call the new image koala-blurred
+ > quality blur koala koala-blurred <
+
+
+
+                        SAVING
+
+if the user wants to save an image to 'koala-red' with
+the type ppm to the file location images/Koala-red.ppm
+ > save images/koala-red koala-red ppm <
+
+if the user wants to save an image to 'koala-red' with
+the type jpg to the file location images/Koala-red.jpg
+ > save images/koala-red koala-red jpg <
+
+if the user wants to save an image to 'koala-red' with
+the type png to the file location images/Koala-red.png
+ > save images/koala-red koala-red png <
+
+if the user wants to save an image to 'koala-bmp' with
+the type ppm to the file location images/Koala-red.bmp
+ > save images/koala-red koala-red bmp <

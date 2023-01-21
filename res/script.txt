@@ -1,0 +1,41 @@
+load res/watermelon.ppm default
+
+grayscale red default redGrayscale
+grayscale green default greenGrayscale
+grayscale blue default blueGrayscale
+grayscale value default valueGrayscale
+grayscale intensity default intensityGrayscale
+grayscale luma default lumaGrayscale
+
+brightness 100 default brighten
+brightness -100 default darken
+
+flip horizontal default horizontal
+flip vertical default vertical
+
+quality blur default blur
+quality sharpen default sharpen
+
+filter sepia default sepia
+filter luma default luma
+
+save default res/default png
+save redGrayscale res/redGrayscale bmp
+save greenGrayscale res/greenGrayscale jpg
+save blueGrayscale res/blueGrayscale ppm
+save valueGrayscale res/redGrayscale png
+save intensityGrayscale res/intensityGrayscale bmp
+save lumaGrayscale res/lumaGrayscale jpg
+
+save brighten res/brighten ppm
+save darken res/darken png
+
+save horizontal res/horizontal bmp
+save vertical res/vertical jpg
+
+save blur res/blur ppm
+save sharpen res/sharpen png
+
+save sepia res/sepia bmp
+save luma res/luma jpg
+

@@ -1,0 +1,235 @@
+
+                                 READ ME BEFORE USING OUR IMAGE PROCESSOR
+
+
+CITATION : All of the images we use and include are either
+from what was provided in the images folder, or images we
+made ourselves.
+
+
+Interface
+    ImageModel
+        This is the interface for our model.
+        The usage of this interface is to contain methods that the program can access and modify
+        the hashmap in the ImageModelImpl class.
+
+        Class
+            ImageModelImpl(implements ImageModel)
+                This is the class for our model.
+                The usage of this class is to represent the hashmap of saved edits done by the user
+                with their corresponding name.
+
+Interface
+    Image
+        This is the interface for the image.
+        The usage of this interface is to contain methods that retrieves info from an Image object.
+
+        Class
+            ImageImpl(implements Image)
+                This is the class for the implementation of image.
+                The usage of this class is to represent the implementation of the methods that users
+                can process an image.
+
+Interface
+    Pixel
+        This is the interface for the pixel.
+        The usage of this interface is to contain methods that help access values
+        in the PixelImpl class.
+
+        Class
+            PixelImpl(implements Pixel)
+                This is the class for the implementation of pixel.
+                The usage of this class is to represent the implementation of a pixel.
+
+Interface
+    IController
+        This is the interface for the controller for our Image Processor.
+        The usage of this interface is to contain a method that run the commands
+        in each command classes.
+
+        Class
+            Controller(implements IController)
+                This is the class for the controller.
+                The usage of this class is to hold different cases that pointing
+                to different image-process operations.
+
+Interface
+    ImageProcessingCommands
+        This is the interface for the image processing commands.
+        The usage of this interface is to contain a method that for the user to execute
+         a process on an image.
+
+        Class
+            Flip(implements ImageProcessingCommands)
+                This is the class that for the user to flip an image
+                that is retrieved from a hashmap.
+                The type of flip that occurs is up to the user's specification.
+                The two types are horizontally-flip and vertically-flip.
+
+        Class
+            Brightness(implements ImageProcessingCommands)
+                This is the class that for the user to brighten/darken an image
+                that is retrieved from a hashmap.
+
+        Class
+            GrayScale(implements ImageProcessingCommands)
+                This is the class that for the user to grayscale an image
+                that is retrieved from a hashmap.
+                The type of grayscale that occurs is up to the user's specification.
+                The is six types of grayscales: red, green, blue, value, intensity, and luma.
+
+        Class
+            Quality(implements ImageProcessingCommands)
+                This class is for the user to modify a copy of an image
+                passed in from the ImageModel.
+                The two types of modifications are Sharpen or Blur.
+
+        Class
+            ColorTransformation(implements ImageProcessingCommands)
+                This class is for the user to filter a copy of an image
+                pass in from the ImageModel.
+                The two types of filters are luma and sepia.
+
+Interface
+    ImageView
+        This is the interface for the view of our program.
+        The usage of this interface is to contain the methods that write messages to an appendable.
+
+        CLass
+            ImageViewImpl(implements ImageView)
+                This is the class that for the implementation of ImageView.
+                The usage of this class is for the program to render different messages to specific
+                spaces.
+
+Class
+    PPMUtil
+        This is the class that contains utility methods to read a PPM image from file and create
+        an Image that is readable by our program, to load a file, and to save a file.
+
+    ImageUtil
+        This class contains util methods that read from a file of the type jpg, jpeg, png, or bmp,
+        and can save to the same types of files as well.
+
+    UserMain
+        This class is how our Image Processing program is run from a user. The user can run the
+        main class either with a JAR file using terminal, or by running the main class directly and
+        optionally creating a configuration.
+
+
+
+
+--------------------------------------Homework 05 Changes-------------------------------------------
+
+
+    Controller interface and class
+
+ - The field "type" was added that specifies which type of edit is executed.
+ - Similar cases such as grayscale were combined which took in a type that determined which
+   edit was carried out. We also changed the writeMessages in each case to be more generic.
+ - Save and load were both changed to accept files of the types "ppm, jpg, jpeg, png, and bmp"
+ - Added helper methods to reduce the size of the run method
+
+    ImageUtil
+
+ - Created to load and save files of the types "jpg, jpeg, png, and bmp"
+
+    PPMUtil
+
+ - Methods and class to be specific to the file type "ppm"
+
+    Image interface and class
+
+ - Our code in Image and ImageImpl was refactored so we no longer need to carry out edits in those
+   classes. Instead, the edits are carried out in their respective command function objects.
+ - Restrictions on the implementation were tightened to make sure no implementation details
+   were leaked
+
+    ImageModel interface and ImageModel
+
+ - Tightened implementation to prevent the leak of any unnecessary implementation details from
+   other interfaces/classes. We did this by referencing interfaces rather than an object of
+   the interface.
+
+    Pixel interface and classes
+
+ - Created the ceiling and floor for a pixel values in the constructor.
+
+    Brightness command
+
+ - Deleted all the checks to make sure the pixel value could not be greater than 255 or less than 0
+   we implemented this into our PixelImpl's controller instead.
+
+    ColorTransformation command
+
+ - Created a new method called color transformation for hm5.
+ - Applies the filters sepia or luma to an image by iterating through a matrix for each pixel
+
+    Flip command
+ - Created a new method called flip for hm5.
+ - Abstracted the for loops from each case
+
+    Grayscale command
+ - Created a new method called grayscale for hm5.
+ - Abstracted the for loops from each case
+
+    Quality command
+ - Created a new method called quality for hm5.
+ - Modifies the quality of an image by changing each pixel value with respect to the surrounding
+   pixels.
+
+   UserMain
+
+ - Refactored to also be able to load a script using the argument "-file" at the start of the
+   arguments
+
+
+
+--------------------------------------Homework 06 Changes-------------------------------------------
+
+
+ Interface
+    GuiController
+         - This interface represents the controller for our gui, which contain methods that
+         allow users to interact with our image processor by processing on loaded images so
+         that they can see the process
+         and save images.
+
+         Rationale: for meeting the MVC pattern, for user to use the image processor
+
+     Class
+        GuiControllerImpl
+             - GuiControllerImpl contains the methods that get information that the user inputs
+            from the view and alters images accordingly.
+
+         Rationale: for meeting the MVC pattern, for user to use the image processor
+
+
+ Interface
+    GuiView
+        - This interface represents the visible GUI that the user can interact with. It contains
+        methods that create all the buttons and places panels accordingly.
+
+        Rationale: creating a visible gui and to meet MVC pattern standards
+
+     Class
+        GuiViewImpl
+            - GuiViewImpl creates the gui object and contains many helper methods to help
+            break down the very lengthy constructor. Has methods to set images and histograms.
+
+        Rationale: creating a visible gui and to meet MVC pattern standards
+
+
+ Class
+     GuiMain
+        - Allows the user to run the program. The user can choose one of three options to use the
+        image processor: with System.in, with a script file, or by creating the GUI.
+        It contains method that takes in three different command line arguments paths
+        for different ways to run our image processor.
+
+        Rationale: to test if the program runs according to our design
+
+
+
+ Interface
+    IImage
+        added getHistogramValues to Image interface to gather all the data
